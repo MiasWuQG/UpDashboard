@@ -16,9 +16,10 @@
     "axios": "^1.6.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "pinia": "^2.1.7",
-    "primevue": "^3.43.0",
+    "primevue": "^3.49.1",
     "vue": "^3.3.10",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue3-m-circle-progress-bar": "^0.6.1"
   },
   "devDependencies": {
     "@rushstack/eslint-config": "^3.5.0",

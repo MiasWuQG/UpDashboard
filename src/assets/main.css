@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Jakarta;
+    src: url("../assets/fonts/Jakarta.ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
