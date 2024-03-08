@@ -31,7 +31,7 @@ import CloseIcon from '../icons/CloseIcon.vue';
       <span class="text-base font-[Jakarta] pt-4">Your Free Plan</span>
       <div class="flex items-center justify-around flex-col gap-2">
         <AppKnob />
-        <span class="text-[10px]">Unit Renewal</span>
+        <span class="text-[10px]">Until Renewal</span>
       </div>
     </div>
     <div class="flex flex-col items-start justify-center gap-4 py-4">

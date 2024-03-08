@@ -5,14 +5,30 @@ import FailedJobsIcon from '../icons/FailedJobsIcon.vue';
 import CompletedJobsIcon from '../icons/CompletedJobsIcon.vue';
 import ActiveJobsIcon from '../icons/ActiveJobsIcon.vue';
 import ArrowIcon from '../icons/ArrowIcon.vue';
+
+defineProps({
+  hideHeaders: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
 </script>
 
 <template>
-  <div class="mt-10">
-    <h2 class="font-[Jakarta] text-white text-xl mb-5">
+  <div
+    :class="{'mt-0': hideHeaders, 'mt-10': !hideHeaders}"
+  >
+    <h2
+      v-if="!hideHeaders"
+      class="font-[Jakarta] text-white text-xl mb-5"
+    >
       Jobs
     </h2>
-    <AppElementsWrapper class="gap-4 w-full max-w-[1370px] sm:bg-[#222F2A] p-0 sm:p-5 flex flex-col lg:flex-row bg-transparent">
+    <AppElementsWrapper
+      class="gap-4 w-full max-w-[1370px] sm:bg-[#222F2A] p-0 flex flex-col lg:flex-row bg-transparent"
+      :class="{'sm:p-5': !hideHeaders}"
+    >
       <div class="w-full flex gap-4 flex-col sm:flex-row">
         <div class="w-full sm:max-w-[50%] py-4 px-8 h-[135px] rounded-md bg-[#394A43] flex flex-col justify-center gap-5 font-[Jakarta] text-white">
           <div>

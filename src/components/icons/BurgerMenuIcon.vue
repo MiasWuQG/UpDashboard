@@ -23,7 +23,8 @@ defineProps({
 <style scoped>
 
 .nav-burger-menu {
-    width: 18px;
+    max-width: 18px;
+    width: 100%;
     height: 6px;
     position: relative;
     -webkit-transform: rotate(0deg);

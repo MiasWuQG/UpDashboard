@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import DashboardIcon from '../icons/DashboardIcon.vue';
 import ResourcesIcon from '../icons/ResourcesIcon.vue';
 import PlaygroundIcon from '../icons/PlaygroundIcon.vue';
@@ -20,14 +20,14 @@ const navigationItems = ref([
 
 const openNav = ref(false);
 
-watch(openNav, () => {
-  openNav.value ? document.body.classList.add("overfl") :document.body.classList.remove("overfl"); 
+watch(openNav, (newValue) => {
+  openNav.value ? document.body.classList.add("overfl") :document.body.classList.remove("overfl");
 });
 </script>
 
 <template>
   <!-- desktop -->
-  <div class="hidden md:flex min-h-screen min-w-[70px] bg-white bg-opacity-5 flex-col justify-between items-center py-4">
+  <div class="hidden md:flex max-h-screen min-w-[70px] bg-white bg-opacity-5 flex-col justify-between items-center py-4">
     <div class="flex flex-col gap-10">
       <router-link to="/">
         <img src="../../assets/images/logo.png">
@@ -64,11 +64,11 @@ watch(openNav, () => {
   </div>
   <!-- mobile -->
   <div
-    class="flex md:hidden mb-10 items-center w-full relative z-50"
+    class="flex md:hidden mb-1 items-center w-full relative z-50"
   >
     <BurgerMenuIcon
-      class="z-50 mt-10"
-      :class="{'mx-4' : !openNav, 'ml-auto mr-4 mt-10' : openNav}"
+      class="z-50 mt-8 p-4 max-w-[18px]"
+      :class="{'mx-4 mr-auto' : !openNav, 'ml-auto mr-4 relative top-1' : openNav}"
       :open-nav="openNav"
       @click="openNav = !openNav"
     />
@@ -87,11 +87,11 @@ watch(openNav, () => {
           <div
             v-for="navItem in navigationItems"
             :key="navItem.title"
-            class="flex justify-start backdrop-blur-xl bg-white bg-opacity-10 rounded-md rounded-l-none"
+            class="flex justify-start backdrop-blur-xl bg-white bg-opacity-10 rounded-md"
           >
             <router-link
               :to="navItem.to"
-              class="relative w-full h-[54px] flex items-center justify-start rounded-md "
+              class="relative w-full h-[54px] flex items-center justify-start rounded-md"
               @click="openNav = false"
             >
               <div class="bg-[#42504A] bg-opacity-100 w-[54px] h-[54px] flex items-center justify-center rounded-md relative z-50">

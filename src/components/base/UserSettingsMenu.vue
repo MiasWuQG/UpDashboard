@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 
 const settingsMenuItems = [
   { title: "Manage Account", href: "" },
@@ -10,8 +11,15 @@ const settingsMenuItems = [
 ];
 
 const openSettingsMenu = ref(false);
+const settingsMenu = ref(null);
 
 const name = "Matthias Meier";
+
+onClickOutside(settingsMenu, () => {
+  setTimeout(() => {
+    openSettingsMenu.value = false;
+  }, 20);
+});
 
 </script>
 
@@ -25,6 +33,7 @@ const name = "Matthias Meier";
       <span>MW</span>
       <div
         v-if="openSettingsMenu"
+        ref="settingsMenu"
         class="absolute flex flex-col top-[-205px] right-[-135px] p-2 w-[175px] h-[195px] rounded-lg text-sm backdrop-blur-lg bg-white bg-opacity-10"
       >
         <div

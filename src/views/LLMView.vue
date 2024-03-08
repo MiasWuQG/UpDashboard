@@ -8,7 +8,7 @@ import ArrowIcon from '@/components/icons/ArrowIcon.vue';
     <h2 class="font-[Jakarta] text-white text-xl mb-5">
       LLM x HybridSolver
     </h2>
-    <AppElementsWrapper class="gap-4 w-auto flex flex-col bg-transparent sm:bg-[#222F2A] p-0 sm:p-5 font-[Jakarta] text-white">
+    <AppElementsWrapper class="w-full gap-4 flex bg-transparent sm:bg-[#222F2A] p-0 sm:p-5 font-[Jakarta] text-white">
       <div class="w-full min-h-[188px] flex flex-col justify-between rounded-md border bg-white/5  border-white/5  text-white">
         <div class="flex flex-col items-start">
           <div class="p-5 flex flex-col gap-2">

@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'LLM',
       component: () => import('../views/LLMView.vue'),
     },
+    {
+      path: '/jobs',
+      name: 'Jobs',
+      component: () => import('../views/JobsView.vue'),
+    },
   ],
 });
 

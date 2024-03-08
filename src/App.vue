@@ -5,23 +5,25 @@ import AppNavigation from './components/base/AppNavigation.vue';
 
 <template>
   <div class="flex bg-black relative">
-    <div class="absolute rame w-full min-h-screen h-full" />
-    <div class="relative z-10 flex flex-col md:flex-row min-h-screen w-full">
+    <div class="absolute base-bg w-full min-h-screen h-full" />
+    <div class="relative z-10 flex flex-col md:flex-row w-full">
       <AppNavigation />
-      <RouterView v-slot="{ Component }">
-        <transition
-          name="fade"
-          mode="out-in"
-        >
-          <component :is="Component" />
-        </transition>
-      </RouterView>
+      <div class="h-auto sm:min-h-screen sm:max-h-screen sm:overflow-y-scroll w-full">
+        <RouterView v-slot="{ Component }">
+          <transition
+            name="fade"
+            mode="out-in"
+          >
+            <component :is="Component" />
+          </transition>
+        </RouterView>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.rame {
+.base-bg {
   background: rgb(46,134,137);
   background: radial-gradient(circle, rgba(46,134,137,0.029871323529411797) 0%, rgba(73,212,156,0.1419161414565826) 0%, rgba(70,204,150,0.15312062324929976) 0%, rgba(60,174,128,0.08) 80%, rgba(0,0,0,0.029871323529411797) 100%);
   background-size: 170%;
