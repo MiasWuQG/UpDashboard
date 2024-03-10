@@ -5,7 +5,7 @@ import ResourcePost from '@/components/resources/ResourcePost.vue';
 </script>
 
 <template>
-  <div class="w-full px-4 py-0 md:p-10 max-w-[1370px]">
+  <div class="w-full px-4 py-0 md:p-10 md:pb-0 max-w-[1370px]">
     <h2 class="font-[Jakarta] text-white text-xl mb-5">
       Resources
     </h2>

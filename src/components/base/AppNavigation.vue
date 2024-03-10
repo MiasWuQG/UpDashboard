@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import DashboardIcon from '../icons/DashboardIcon.vue';
 import ResourcesIcon from '../icons/ResourcesIcon.vue';
 import PlaygroundIcon from '../icons/PlaygroundIcon.vue';
@@ -20,7 +20,7 @@ const navigationItems = ref([
 
 const openNav = ref(false);
 
-watch(openNav, (newValue) => {
+watch(openNav, () => {
   openNav.value ? document.body.classList.add("overfl") :document.body.classList.remove("overfl");
 });
 </script>
@@ -67,13 +67,19 @@ watch(openNav, (newValue) => {
     class="flex md:hidden mb-1 items-center w-full relative z-50"
   >
     <BurgerMenuIcon
-      class="z-50 mt-8 p-4 max-w-[18px]"
-      :class="{'mx-4 mr-auto' : !openNav, 'ml-auto mr-4 relative top-1' : openNav}"
-      :open-nav="openNav"
-      @click="openNav = !openNav"
+      v-if="!openNav"
+      class="z-30 mt-8 p-4 max-w-[18px] mx-4 mr-auto"
+      :open-nav="false"
+      @click="openNav = true"
+    />
+    <BurgerMenuIcon
+      v-if="openNav"
+      class="z-50 mt-8 p-4 max-w-[18px] ml-auto mr-4 relative top-1"
+      :open-nav="true"
+      @click="openNav = false"
     />
     <div
-      class="w-full bg-[#0C1E16] overflow-hidden absolute flex flex-col items-start left-0 top-0 transition-all duration-200"
+      class="w-full bg-[#0C1E16] overflow-hidden absolute z-40 flex flex-col items-start left-0 top-0 transition-all duration-200"
       :class="{'h-screen overflow-hidden' : openNav, 'h-[0px]' : !openNav}"
     >
       <router-link

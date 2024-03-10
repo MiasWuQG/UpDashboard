@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import AppNavigation from './components/base/AppNavigation.vue';
+import AppFooter from './components/base/AppFooter.vue';
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import AppNavigation from './components/base/AppNavigation.vue';
     <div class="absolute base-bg w-full min-h-screen h-full" />
     <div class="relative z-10 flex flex-col md:flex-row w-full">
       <AppNavigation />
-      <div class="h-auto sm:min-h-screen sm:max-h-screen sm:overflow-y-scroll w-full">
+      <div class="h-auto min-h-screen md:max-h-screen md:overflow-y-scroll w-full flex flex-col justify-between">
         <RouterView v-slot="{ Component }">
           <transition
             name="fade"
@@ -17,6 +18,7 @@ import AppNavigation from './components/base/AppNavigation.vue';
             <component :is="Component" />
           </transition>
         </RouterView>
+        <AppFooter />
       </div>
     </div>
   </div>

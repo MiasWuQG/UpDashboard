@@ -25,9 +25,9 @@ onClickOutside(settingsMenu, () => {
 
 <template>
   <!-- user ring -->
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-3 relative z-50">
     <div
-      class="w-[42px] h-[42px] rounded-full bg-white font-[Jakarta] ring-2 ring-[#2D3D3B] ring-inset flex justify-center items-center cursor-pointer relative"
+      class="w-[42px] h-[42px] rounded-[100%] bg-white font-[Jakarta] border-2 border-[#2D3D3B] flex justify-center items-center cursor-pointer relative"
       @click="openSettingsMenu = !openSettingsMenu"
     >
       <span>MW</span>

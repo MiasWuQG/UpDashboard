@@ -1,30 +1,38 @@
 <script setup lang='ts'>
 import AppKnob from '../base/AppKnob.vue';
 import TooltipIcon from '../icons/TooltipIcon.vue';
+import { onClickOutside } from '@vueuse/core';
+import { ref } from 'vue';
+import CloseIcon from '../icons/CloseIcon.vue';
 
 defineProps({
-    openModal : {
-        type: Boolean,
-        required: false,
-        default: false,
-
-    },
+  openModal : {
+      type: Boolean,
+      required: false,
+      default: false,
+  }
 });
 
-defineEmits(['closeModal']);
+const emit = defineEmits(['closeModal']);
 
-import CloseIcon from '../icons/CloseIcon.vue';
+const planModal = ref(null);
+
+onClickOutside(planModal, () => {
+  setTimeout(() => {
+    emit('closeModal');
+  }, 20);
+});
 
 </script>
 
 <template>
   <div
     v-if="openModal"
-    :modal="false"
+    ref="planModal"
     class="w-[230px] text-white rounded-md absolute px-6 pt-7 pb-4 top-0 right-0 backdrop-blur-3xl z-10 bg-white/5 bg-opacity-10 border  border-white/5"
   >
     <CloseIcon
-      class="cursor-pointer absolute right-3 top-4"
+      class="cursor-pointer absolute right-1 top-4 text-center"
       @click="$emit('closeModal')"
     />
     <div class="flex justify-between items-start">
