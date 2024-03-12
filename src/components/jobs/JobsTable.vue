@@ -64,23 +64,23 @@ const calculateTotalPages = () => {
     >
       <Column
         field="id"
-        header="JOB ID"
+        header="Job ID"
         :pt="{
-          headerCell: {class: 'pl-5 py-[10px] text-[11px] uppercase w-[35%]'}
+          headerCell: {class: 'pl-5 py-[10px] text-[11px] w-[35%]'}
         }"
       />
       <Column
         field="startDate"
         header="Start Date"
         :pt="{
-          headerCell: {class: 'py-2 text-[11px] uppercase w-[25%]'}
+          headerCell: {class: 'py-2 text-[11px] w-[25%]'}
         }"
       />
       <Column
         field="status"
         header="Status"
         :pt="{
-          headerCell: {class: 'py-2 text-[11px] uppercase w-[23%]'}
+          headerCell: {class: 'py-2 text-[11px] w-[23%]'}
         }"
       >
         <template #body="{ data }">
@@ -101,7 +101,7 @@ const calculateTotalPages = () => {
         field="log"
         header="Log"
         :pt="{
-          headerCell: {class: 'py-2 text-[11px] uppercase w-[10%]'}
+          headerCell: {class: 'py-2 text-[11px] w-[10%]'}
         }"
       >
         <template #body>
@@ -114,16 +114,16 @@ const calculateTotalPages = () => {
         field="action"
         header="Action"
         :pt="{
-          headerCell: {class: 'py-2 text-[11px] uppercase w-[10%] pr-5'}
+          headerCell: {class: 'py-2 text-[11px] w-[10%] pr-5'}
         }"
       >
         <template #body="{ data }">
           <button
             class="min-w-[48.62px] h-[18.7px] px-2 rounded-xl text-[11px] font-medium text-center flex items-center justify-center leading-[18.7px]"
             :class="{'bg-[#FEE2E2] text-[#991B1B]': data.action === 'stop', 'bg-[#D1FAE5] text-[#065F46]': data.action === 'adjust'}"
-            @click="data.settings.open = true"
+            @click="data.action === 'adjust' ? data.settings.open = true : ''"
           >
-            {{ data.action }}
+            <span class="capitalize">{{ data.action }}</span>
           </button>
           <JobsTableSettingsModal
             :open-modal="data.settings.open"

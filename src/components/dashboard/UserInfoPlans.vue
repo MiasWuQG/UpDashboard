@@ -19,7 +19,7 @@ const freePlanOptionsModalVisible = ref(false);
         <div class="group">
           <a
             href="#!"
-            class="text-sm font-semibold pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
+            class="text-sm pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
           >Upgrade Now 
             <ArrowIcon class="w-[14px] group-hover:translate-x-1 transition-all duration-300 pt-0.5" />
           </a>
@@ -46,7 +46,7 @@ const freePlanOptionsModalVisible = ref(false);
         <ProgressBar
           :value="60"
           :show-value="false"
-          class="h-[13px] bg-white/20 border border-white  border-opacity-5"
+          class="h-[13px] bg-[#57635E] border border-white  border-opacity-5"
         />
       </div>
       <div class="flex flex-col mt-5">
@@ -57,7 +57,7 @@ const freePlanOptionsModalVisible = ref(false);
         <ProgressBar
           :value="80"
           :show-value="false"
-          class="h-[13px] bg-white/20 border border-white  border-opacity-5"
+          class="h-[13px] bg-[#57635E] border border-white  border-opacity-5"
         />
       </div>
     </div>

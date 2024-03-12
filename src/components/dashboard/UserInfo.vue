@@ -80,8 +80,8 @@ const copyToClipBoard = (text: string) => {
     <div class="w-full h-[253px] flex flex-col justify-between rounded-md border border-white/20  text-white">
       <div class="flex flex-col items-start">
         <img
-          src="../../assets/images/logo.svg"
-          class="p-1 pb-0"
+          src="../../assets/images/logo.png"
+          class="p-1 pb-0 w-[80px]"
         >
         <div class="p-4 flex flex-col pt-2 gap-2">
           <span class="text-lg font-[Jakarta]">Don’t know where to start?</span>
@@ -91,7 +91,7 @@ const copyToClipBoard = (text: string) => {
       <div class="group m-4">
         <a
           href="#!"
-          class="text-sm font-semibold pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
+          class="text-sm pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
         >Resources 
           <ArrowIcon class="w-[14px] group-hover:translate-x-1 transition-all duration-300 pt-0.5" />
         </a>

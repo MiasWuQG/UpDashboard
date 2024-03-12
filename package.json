@@ -16,6 +16,7 @@
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "axios": "^1.6.2",
+    "circle-progress.vue": "^3.2.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "pinia": "^2.1.7",
     "primevue": "^3.49.1",

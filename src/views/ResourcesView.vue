@@ -20,7 +20,7 @@ import ResourcePost from '@/components/resources/ResourcePost.vue';
         <div class="group m-5">
           <a
             href="#!"
-            class="text-sm font-semibold pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
+            class="text-sm pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
           >Documentation 
             <ArrowIcon class="w-[14px] group-hover:translate-x-1 transition-all duration-300 pt-0.5" />
           </a>
@@ -36,7 +36,7 @@ import ResourcePost from '@/components/resources/ResourcePost.vue';
         <div class="group">
           <a
             href="#!"
-            class="text-sm font-semibold pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
+            class="text-sm pt-1 text-[#49D49C] flex gap-1 items-center parent-hover:text-red-400"
           >View All 
             <ArrowIcon class="w-[14px] group-hover:translate-x-1 transition-all duration-300 pt-0.5" />
           </a>

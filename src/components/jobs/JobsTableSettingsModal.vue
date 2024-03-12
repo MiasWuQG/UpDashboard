@@ -6,6 +6,8 @@ import TooltipIcon from "../icons/TooltipIcon.vue";
 import CloseIcon from "../icons/CloseIcon.vue";
 import Checkbox from "primevue/checkbox";
 import PlayIcon from "../icons/PlayIcon.vue";
+import CheckMarkIcon from "../icons/CheckMarkIcon.vue";
+import AppSelect from "../base/AppSelect.vue";
 
 
 defineProps({
@@ -38,7 +40,7 @@ const relativeGapOptions = ref([
 const selectedTimeLimit = ref("");
 const absoluteGap = ref("");
 const relativeGap = ref("");
-const optimalityProof = ref([]);
+const optimalityProof = ref(['on']);
 const publicQuantumHeuristics = ref([]);
 
 onClickOutside(jobsTableSettingsModalRef, () => {
@@ -85,22 +87,14 @@ watch(optimalityProof, () => {
             </div>
           </div>
         </div>
-        <select
+        <AppSelect
           v-model="selectedTimeLimit"
-          class="def-select appearance-none font-[Jakarta] outline-none h-[35px] rounded-md bg-white/10 px-3"
-        >
-          <option
-            v-for="option in timeLimitOptions"
-            :key="option"
-            value="option"
-          >
-            {{ option }}
-          </option>
-        </select>
+          :options="timeLimitOptions"
+        />
       </div>
       <div class="flex w-full gap-2 flex-col">
         <div class="flex w-full gap-2">
-          <span class="text-[10px]">Optimality Roof</span>
+          <span class="text-[10px]">Optimality Proof</span>
           <div class="group relative">
             <TooltipIcon />
             <div class="absolute hidden min-w-[250px] group-hover:flex py-2 px-3 border border-white/10 rounded-md bg-[#394A43] z-10 text-[12px]">
@@ -113,6 +107,7 @@ watch(optimalityProof, () => {
             <Checkbox
               v-model="optimalityProof"
               input-id="c1"
+              :disabled="optimalityProof.includes('on')"
               :pt="{
                 root: { class: 'rounded-[2px] border-[#49D49C] w-[14px] h-[14px]' },
                 box: { class: 'bg-transparent w-[14px] h-[14px]' },
@@ -121,7 +116,9 @@ watch(optimalityProof, () => {
               value="on"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
@@ -132,22 +129,25 @@ watch(optimalityProof, () => {
           <div class="flex items-center gap-1">
             <Checkbox
               v-model="optimalityProof"
+              :disabled="optimalityProof.includes('off')"
               input-id="c2"
               :pt="{
                 root: { class: 'rounded-[2px] border-[#49D49C] w-[14px] h-[14px]' },
                 box: { class: ' bg-transparent w-[14px] h-[14px]' },
               }"
-              name="Off"
+              name="Off (Qubo only)"
               value="off"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked}" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
               for="c2"
               class="text-[9px]  cursor-pointer"
-            > Off </label>
+            > Off (Qubo only) </label>
           </div>
         </div>
       </div>
@@ -161,18 +161,10 @@ watch(optimalityProof, () => {
             </div>
           </div>
         </div>
-        <select
+        <AppSelect
           v-model="absoluteGap"
-          class="def-select appearance-none font-[Jakarta] outline-none h-[35px] rounded-md bg-white/10 px-3"
-        >
-          <option
-            v-for="option in absoluteGapOptions"
-            :key="option"
-            value="option"
-          >
-            {{ option }}
-          </option>
-        </select>
+          :options="absoluteGapOptions"
+        />
       </div>
       <div class="flex w-full gap-2 flex-col">
         <div class="flex w-full gap-2">
@@ -184,18 +176,10 @@ watch(optimalityProof, () => {
             </div>
           </div>
         </div>
-        <select
+        <AppSelect
           v-model="relativeGap"
-          class="def-select appearance-none font-[Jakarta] outline-none h-[35px] rounded-md bg-white/10 px-3"
-        >
-          <option
-            v-for="option in relativeGapOptions"
-            :key="option"
-            value="option"
-          >
-            {{ option }}
-          </option>
-        </select>
+          :options="relativeGapOptions"
+        />
       </div>
       <div class="flex w-full gap-2 flex-col">
         <div class="flex w-full gap-2">
@@ -220,7 +204,9 @@ watch(optimalityProof, () => {
               value="D-Wave sim"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
@@ -240,7 +226,9 @@ watch(optimalityProof, () => {
               value="PASQAL QAOA sim"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked}" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
@@ -260,7 +248,9 @@ watch(optimalityProof, () => {
               value="PASQAL QAA sim"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked}" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
@@ -280,7 +270,9 @@ watch(optimalityProof, () => {
               value="IBM QAOA sim"
             >
               <template #icon="{ checked }">
-                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked}" />
+                <div :class="{'w-full h-full rounded-[2px] bg-[#49D49C] border border-[#49D49C] bg-opacity-25': checked, 'w-full h-full rounded-[2px] border border-white/10 bg-white/5 ': !checked }">
+                  <CheckMarkIcon v-if="checked" />
+                </div>
               </template>
             </Checkbox>
             <label
@@ -298,7 +290,10 @@ watch(optimalityProof, () => {
           <PlayIcon />
           Submit
         </button>
-        <button class="bg-white/10  min-w-[82px] min-h-[30px] text-[10px] rounded-md active:bg-[#394A43]">
+        <button
+          class="bg-white/10  min-w-[82px] min-h-[30px] text-[10px] rounded-md active:bg-[#394A43]"
+          @click="emit('closeModal')"
+        >
           Cancel
         </button>
       </div>

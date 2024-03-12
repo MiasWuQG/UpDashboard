@@ -30,7 +30,10 @@ watch(openNav, () => {
   <div class="hidden md:flex max-h-screen min-w-[70px] bg-white bg-opacity-5 flex-col justify-between items-center py-4">
     <div class="flex flex-col gap-10">
       <router-link to="/">
-        <img src="../../assets/images/logo.png">
+        <img
+          src="../../assets/images/logo.png"
+          class="w-[70px]"
+        >
       </router-link>
       <div class="flex flex-col gap-4">
         <div
@@ -52,7 +55,7 @@ watch(openNav, () => {
             </div>
             <div
               v-if="navItem.isHovering"
-              class="font-[Jakarta] min-w-[100px] whitespace-nowrap flex flex-nowrap absolute z-0 px-4 left-[33px] rounded-l-none rounded-md h-[38px] items-center justify-center text-white text-sm backdrop-blur-xl bg-white bg-opacity-10"
+              class="font-[Jakarta] min-w-[100px] whitespace-nowrap flex flex-nowrap absolute z-40 px-4 left-[33px] rounded-l-none rounded-md h-[38px] items-center justify-center text-white text-sm backdrop-blur-xl bg-white bg-opacity-10"
             >
               {{ navItem.title }}
             </div>
